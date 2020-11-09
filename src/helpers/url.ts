@@ -17,7 +17,7 @@ export function bulidURL(url:string,params?:any){
     Object.keys(params).forEach(key=>{
         let val=params[key]
         let values:string[]=[]
-        if(val==''|| typeof val=='undefined'){
+        if(val==null|| typeof val=='undefined'){
             return 
         }
         if(Array.isArray(val)){
