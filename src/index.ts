@@ -1,16 +1,17 @@
 import { bulidURL } from './helpers/url'
-import {AxiosConfig} from './types'
+import {AxiosConfig,AxiosPromise} from './types'
 import xhr from './xhr' 
 import {transformData} from './helpers/data'
 import {processHeaders} from './helpers/headers'
-function axios (config:AxiosConfig):void{
+function axios (config:AxiosConfig):AxiosPromise{
     processConfig(config)
-    xhr(config)
+    return  xhr(config)
 }
 function processConfig (config: AxiosConfig): void {
     config.url = transformUrl(config)
-    config.data=transformRequsetData(config)
     config.headers=transformHeaders(config)
+    config.data=transformRequsetData(config)
+    
   }
   
 function transformUrl (config: AxiosConfig): string {
