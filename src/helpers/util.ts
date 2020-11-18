@@ -5,7 +5,9 @@ export function isDate (val:any): val is Date{
 export function isObject(val:any):val is Object{
     return toString.call(val)=='[object Object]'
 }
-
+export function isString(val:any){
+    return toString.call(val)=='[object String]'
+}
 export function parseHeader(headers:string):any{
     if(!headers){
         return
@@ -18,4 +20,15 @@ export function parseHeader(headers:string):any{
        parsed[key]=value
     })
     return parsed
+}
+export function parseData(data:any):any{
+    if(isString(data)){
+        try{
+            data=JSON.parse(data)
+            console.log(data)
+        }catch{
+
+        }
+    }
+    return data
 }
