@@ -66,7 +66,27 @@ router.get('/base/get', function(req, res) {
       })
     }, 3000)
   })
-  
+router.get('/extend/get',function(req,res){
+  res.json({
+    msg:'hello world'
+  })
+})
+router.options('/extend/options',function(req,res){
+  res.end()
+})
+router.post('/extend/post', function(req, res) {
+  res.json(req.body)
+})
+router.get('/extend/user',function(req,res){
+  res.json({
+    code:200,
+    result:{
+      name:'小白',
+      age:23
+    },
+    message:'成功'
+  })
+})
 app.use(router)
 const port = process.env.PORT || 8088
 module.exports = app.listen(port, () => {

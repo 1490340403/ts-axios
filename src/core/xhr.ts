@@ -1,6 +1,6 @@
-import {AxiosConfig,AxiosPromise,AxiosResponse} from './types'
-import {parseHeader} from './helpers/util'
-import { createError } from './helpers/error'
+import {AxiosConfig,AxiosPromise,AxiosResponse} from '../types'
+import {parseHeader} from '../helpers/util'
+import { createError } from '../helpers/error'
 export default function xhr (config:AxiosConfig):AxiosPromise{
   return new Promise((resolve,reject)=>{
     const {method='get',data=null,url,headers,responseType,timeout}=config
@@ -9,7 +9,7 @@ export default function xhr (config:AxiosConfig):AxiosPromise{
     if (timeout) {
       request.timeout = timeout
     }
-    request.open(method.toLocaleUpperCase(),url,true)
+    request.open(method.toLocaleUpperCase(),url!,true)
     request.onerror = function handleError() {
       reject(createError(
         'Network Error',
