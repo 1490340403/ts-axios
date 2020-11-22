@@ -77,6 +77,10 @@ router.options('/extend/options',function(req,res){
 router.post('/extend/post', function(req, res) {
   res.json(req.body)
 })
+router.get('/interceptor/get', function(req, res) {
+  res.json(req)
+})
+
 router.get('/extend/user',function(req,res){
   res.json({
     code:200,
